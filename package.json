@@ -1,0 +1,15 @@
+{
+  "name": "ultra-lims-desafio-qa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Desafio tecnico - Analista de QA Junior - Ultra LIMS",
+  "scripts": {
+    "app": "node mock-server/server.js",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "estabilidade": "node scripts/estabilidade.js"
+  },
+  "devDependencies": {
+    "cypress": "^13.13.0"
+  }
+}

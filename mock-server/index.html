@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Ultra LIMS — Ambiente de Teste</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f4f6f8; color: #1c2733; }
+    header { background: #123047; color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a { color: #cfe3f2; margin-right: 18px; text-decoration: none; cursor: pointer; }
+    main { padding: 24px; max-width: 860px; }
+    .card { background: #fff; border: 1px solid #dce3ea; border-radius: 6px; padding: 20px; margin-bottom: 18px; }
+    input { padding: 8px; border: 1px solid #c3ccd6; border-radius: 4px; width: 280px; display: block; margin-bottom: 10px; }
+    button { padding: 8px 14px; border: 0; border-radius: 4px; background: #1a6ea8; color: #fff; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e5ebf0; font-size: 14px; }
+    tr[data-cy=linha-amostra]:hover { background: #f0f6fb; cursor: pointer; }
+    .hidden { display: none; }
+    .erro { color: #b3261e; font-size: 14px; }
+    .carregando { color: #6b7b8c; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div data-cy="app">
+    <header>
+      <strong>Ultra LIMS</strong>
+      <nav>
+        <a data-cy="menu-amostras">Amostras</a>
+        <a data-cy="menu-laudos">Laudos</a>
+        <span data-cy="usuario-logado"></span>
+      </nav>
+    </header>
+
+    <main>
+      <section id="tela-login" class="card">
+        <h2>Acesso ao sistema</h2>
+        <input class="css-8f3a21" data-cy="email" type="email" placeholder="E-mail" />
+        <input data-cy="senha" type="password" placeholder="Senha" />
+        <button data-cy="entrar">Entrar</button>
+        <p data-cy="erro-login" class="erro"></p>
+      </section>
+
+      <section id="tela-amostras" class="card hidden">
+        <h2>Amostras</h2>
+        <button data-cy="nova-amostra">Nova amostra</button>
+
+        <div id="form-amostra" class="hidden" style="margin-top:16px">
+          <input data-cy="cliente" placeholder="Cliente" />
+          <input data-cy="material" placeholder="Material" />
+          <button data-cy="salvar-amostra">Salvar amostra</button>
+        </div>
+
+        <p id="carregando-lista" class="carregando hidden" data-cy="carregando">Carregando amostras...</p>
+        <table>
+          <thead>
+            <tr><th>Codigo</th><th>Cliente</th><th>Material</th><th>Resultado</th><th>Status</th></tr>
+          </thead>
+          <tbody id="lista-amostras"></tbody>
+        </table>
+      </section>
+
+      <section id="tela-detalhe" class="card hidden">
+        <h2>Detalhe da amostra <span data-cy="codigo-detalhe"></span></h2>
+        <p>Status atual: <strong data-cy="status-laudo"></strong></p>
+        <input data-cy="lancar-resultado" placeholder="Resultado do ensaio" />
+        <button data-cy="salvar-resultado">Salvar resultado</button>
+        <button data-cy="liberar-laudo" style="margin-left:8px">Liberar laudo</button>
+        <p data-cy="erro-laudo" class="erro"></p>
+        <button data-cy="voltar" style="margin-top:16px;background:#6b7b8c">Voltar</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
